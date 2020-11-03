@@ -112,7 +112,7 @@ def menu():
             print(c)
             z=int(input("Choix de la commande : "))
             if z==1:
-                cur.execute("SELECT * FROM annuaire WHERE nom LIKE'%i'")
+                cur.execute("SELECT nom FROM annuaire WHERE nom LIKE'%i'")
                 conn.commit
                 print(cur.fetchall())
             elif z==2:
@@ -121,7 +121,7 @@ def menu():
                 print(cur.fetchall())
 
             elif z==3:
-                sql = "SELECT * FROM annuaire ORDER BY nom" #il suffit ici de changer "nom" par "id" ou par "prenom" etc pour changer le paramètre de tri
+                sql = "SELECT id,nom,prenom,telephone,qualite FROM annuaire ORDER BY nom" #il suffit ici de changer "nom" par "id" ou par "prenom" etc pour changer le paramètre de tri
                 cur.execute(sql)                            #Pour trier par ordre décroissant il suffit de rajouter DESC apres nom
                 result = cur.fetchall()
                 for x in result:

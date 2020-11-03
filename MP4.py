@@ -34,8 +34,8 @@ b="""
 4)Annuler la recherche
 """
 c="""
-1)Renvoie tous les nom qui se finnissent par i
-2)Compter le nombre de contact dans le répertoire
+1)Renvoie tous les noms qui se finnissent par i
+2)Compter le nombre de contacts dans le répertoire
 3)Trier le répertoire par ordre alphabétique (selon les noms)
 4)retourner au menu principale
 """
@@ -76,22 +76,19 @@ def menu():
                 print(a)
             elif z==1:
                 search=str(input("Nom de la personne que vous recherchez : "))
-                cur.execute("SELECT * FROM annuaire WHERE nom=? ",(search,))
+                cur.execute("SELECT prenom,nom,telephone FROM annuaire WHERE nom=? ",(search,))
                 conn.commit
                 print(cur.fetchall())
             elif z==2:
                 search=str(input("Prenom de la personne que vous recherchez : "))
-                cur.execute("SELECT * FROM annuaire WHERE prenom=? ",(search,))
+                cur.execute("SELECT prenom,nom,telephone annuaire WHERE prenom=? ",(search,))
                 conn.commit
                 print(cur.fetchall())
             elif z==3:
                 search=str(input("Numéros de la personne que vous recherchez : "))
-                cur.execute("SELECT * FROM annuaire WHERE telephone=? ",(search,))
+                cur.execute("SELECT prenom,nom,telephone FROM annuaire WHERE telephone=? ",(search,))
                 conn.commit
                 print(cur.fetchall())
-
-
-
 
         elif z==3:
             recherche=str(input('Contact que vous voulez modifier : '))
@@ -134,14 +131,6 @@ def menu():
 print(menu())
 cur.close()
 conn.close()
-
-
-
-
-
-
-
-
 
 
 
